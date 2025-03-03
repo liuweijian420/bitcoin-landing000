@@ -312,7 +312,10 @@ export default function WithdrawPage() {
     localStorage.removeItem("user")
     router.push("/login")
   }
-
+  const LogouttoIndex = () => {
+    localStorage.removeItem('user')
+    router.push('/')
+  }
   return (
     <div className="min-h-screen flex flex-col bg-[#0F141A]">
       {/* Navigation bar */}
@@ -324,7 +327,7 @@ export default function WithdrawPage() {
             <div className="flex items-center w-full md:w-auto">
               {/* 添加 mx-auto 讓 logo 置中 */}
               <div className="flex-shrink-0 mx-auto md:mx-0">
-                <Image src="/logo.png" alt="Logo" width={120} height={120} />
+                <Image src="/logo.png" alt="Logo" width={120} height={120} onClick={LogouttoIndex} />
               </div>
               {/* 漢堡選單按鈕 */}
               <button
