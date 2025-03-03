@@ -107,6 +107,7 @@ export default function LoginPage() {
         <div className="relative p-6 hidden md:block bg-gray-800">
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="relative w-48 h-48">
+              <Link href="/">
               <Image
                 src="/logo.png"
                 alt="Login Logo"
@@ -115,6 +116,7 @@ export default function LoginPage() {
                 sizes="(max-width: 768px) 0vw, 192px"
                 priority
               />
+              </Link>
             </div>
           </div>
         </div>
