@@ -9,14 +9,16 @@ export default function Home() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="w-36 h-12 relative">
-            <Image
-              src="/logo.png"
-              alt="Logo"
-              fill
-              className="object-contain"
-              sizes="(max-width: 768px) 144px, 144px"
-              priority
-            />
+            <Link href="/">
+              <Image
+                src="/logo.png"
+                alt="Logo"
+                fill
+                className="object-contain"
+                sizes="(max-width: 768px) 144px, 144px"
+                priority
+              />  
+            </Link>
           </div>
           <div className="flex gap-8">
             <Link
