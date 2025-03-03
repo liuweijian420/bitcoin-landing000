@@ -112,7 +112,10 @@ export default function SettingsPage() {
     localStorage.removeItem("user")
     router.push("/login")
   }
-
+  const LogouttoIndex = () => {
+    localStorage.removeItem('user')
+    router.push('/')
+  }
   return (
     <div className="min-h-screen flex flex-col bg-[#0F141A]">
       {/* Navigation bar */}
@@ -129,6 +132,7 @@ export default function SettingsPage() {
                   alt="Logo"
                   width={120}
                   height={120}
+                  onClick={LogouttoIndex}
                 />
               </div>
               {/* 漢堡選單按鈕 */}
