@@ -47,12 +47,16 @@ export default function AdminLogin() {
       // 導向管理後台
       router.push('/admin/dashboard')
 
-    } catch (error: any) {
-      toast({
-        variant: "destructive",
-        title: "登入失敗",
-        description: error.message || "請確認帳號密碼是否正確",
-      })
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast({
+          variant: "destructive",
+          title: "登入失敗",
+          description: error.message || "請確認帳號密碼是否正確",
+        })
+      } else {
+        console.error("發生未知錯誤", error);
+      }
     } finally {
       setLoading(false)
     }

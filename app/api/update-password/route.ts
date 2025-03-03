@@ -59,6 +59,7 @@ export async function POST(request: Request) {
       user: userData
     })
   } catch (error) {
-    return NextResponse.json({ error: '系統錯誤' }, { status: 500 })
+    console.error("密碼更新失敗:", error); // ✅ 使用 error
+    return NextResponse.json({ error: "密碼更新失敗" }, { status: 500 });
   }
 }

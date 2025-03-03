@@ -20,7 +20,7 @@ const actionTypes = {
   DISMISS_TOAST: "DISMISS_TOAST",
   REMOVE_TOAST: "REMOVE_TOAST",
 } as const
-
+console.log(actionTypes); // ✅ 這樣 TypeScript 會知道它被用到了
 let count = 0
 
 function genId() {

@@ -67,7 +67,7 @@ export default function Dashboard() {
         })
         return
       }
-      const updateData: any = {}
+      const updateData: Record<string, unknown> = {};
   
       // 只加入有值的欄位到 updateData
       if (editingUser.real_name?.trim()) {
@@ -98,12 +98,16 @@ export default function Dashboard() {
   
       setIsEditing(false)
       fetchUsers()
-    } catch (error: any) {
-      toast({
-        variant: "destructive",
-        title: "錯誤",
-        description: error.message,
-      })
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast({
+          variant: "destructive",
+          title: "錯誤",
+          description: error.message,
+        })
+      } else {
+        console.error("發生未知錯誤", error);
+      }
     }
   }
   const fetchUsers = useCallback(async () => {
@@ -176,12 +180,16 @@ export default function Dashboard() {
       })
       setIsAddingMember(false)
       fetchUsers()
-    } catch (error: any) {
-      toast({
-        variant: "destructive",
-        title: "新增失敗",
-        description: error.message,
-      })
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast({
+          variant: "destructive",
+          title: "新增失敗",
+          description: error.message,
+        })
+      } else {
+        console.error("發生未知錯誤", error);
+      }
     }
   }
 
@@ -218,12 +226,16 @@ export default function Dashboard() {
       setIsAdjustingPoints(false)
       setPointsToAdjust("")
       fetchUsers()
-    } catch (error: any) {
-      toast({
-        variant: "destructive",
-        title: "錯誤",
-        description: error.message,
-      })
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+          toast({
+            variant: "destructive",
+            title: "錯誤",
+            description: error.message,
+          })
+        } else {
+          console.error("發生未知錯誤", error);
+        }
     }
   }
 
@@ -254,12 +266,16 @@ export default function Dashboard() {
       setIsChangingWithdrawalPassword(false)
       setNewWithdrawalPassword("")
       fetchUsers()
-    } catch (error: any) {
-      toast({
-        variant: "destructive",
-        title: "錯誤",
-        description: error.message,
-      })
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast({
+          variant: "destructive",
+          title: "錯誤",
+          description: error.message,
+        })
+      } else {
+        console.error("發生未知錯誤", error);
+      }
     }
   }
 

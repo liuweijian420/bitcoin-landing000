@@ -226,12 +226,16 @@ export default function WithdrawPage() {
       })
 
       setHasBankInfo(true)
-    } catch (error: any) {
-      toast({
-        variant: "destructive",
-        title: "錯誤",
-        description: error.message,
-      })
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast({
+          variant: "destructive",
+          title: "錯誤",
+          description: error.message,
+        })
+      } else {
+        console.error("發生未知錯誤", error);
+      }
     }
   }
 
@@ -290,12 +294,16 @@ export default function WithdrawPage() {
         amount: "",
         withdrawalPassword: "",
       }))
-    } catch (error: any) {
-      toast({
-        variant: "destructive",
-        title: "錯誤",
-        description: error.message,
-      })
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast({
+          variant: "destructive",
+          title: "錯誤",
+          description: error.message,
+        })
+      } else {
+        console.error("發生未知錯誤", error);
+      }
     }
   }
 

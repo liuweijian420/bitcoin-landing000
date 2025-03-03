@@ -73,13 +73,17 @@ export default function LoginPage() {
       // 5. 導向到會員中心
       router.push('/member-center')
 
-    } catch (error: any) {
-      console.error('Login error:', error)
-      toast({
-        title: "登入失敗",
-        description: error.message || "帳號或密碼錯誤",
-        variant: "destructive",
-      })
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error('Login error:', error)
+        toast({
+          title: "登入失敗",
+          description: error.message || "帳號或密碼錯誤",
+          variant: "destructive",
+        })
+      } else {
+        console.error("發生未知錯誤", error);
+      }
     } finally {
       setLoading(false)
     }

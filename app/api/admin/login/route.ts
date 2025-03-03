@@ -48,11 +48,19 @@ export async function POST(request: Request) {
       }
     })
 
-  } catch (error: any) {
-    console.error('Login error:', error)
-    return NextResponse.json(
-      { error: error.message || '登入過程發生錯誤' },
-      { status: 500 }
-    )
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error('Login error:', error);
+      return NextResponse.json(
+        { error: error.message || '登入過程發生錯誤' },
+        { status: 500 }
+      )
+    } else {
+      console.error("發生未知錯誤", error);
+      return NextResponse.json(
+        { error: '登入過程發生錯誤' },
+        { status: 500 }
+      )
+    }
   }
 }
